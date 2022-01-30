@@ -21,9 +21,8 @@ def show_images(data):
     for i in range(data.shape[0]):
 
         imgplot=plt.imshow(data[i])
-        plt.show()
         plt.savefig('image_'+str(i)+'.png')
-
+        plt.show()
     ### END YOUR CODE
 
 
