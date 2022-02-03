@@ -20,7 +20,7 @@ def show_images(data):
 
     for i in range(data.shape[0]):
 
-        imgplot=plt.imshow(data[i])
+        plt.imshow(data[i])
         plt.savefig('image_'+str(i)+'.png')
         plt.show()
     ### END YOUR CODE
@@ -42,21 +42,16 @@ def show_features(X, y, save=True):
     label=y
     x = X[:,0]
     y = X[:,1]
-
-
-
-    plt.scatter(x[label==1], y[label==1], marker='+',color='r')
-    plt.scatter(x[label==-1], y[label==-1], marker='*',color='b')
     
+    plt.scatter(x[label==-1], y[label==-1], marker='*',color='r',label='1')
+    plt.scatter(x[label==1], y[label==1], marker='+',color='b',label='5')
     
+    plt.xlabel('X - value')
+    plt.ylabel('Y - value')
+    plt.legend(loc='best')
     
-    
-    
-    
-    #plt.scatter(X[],y)
-    #plt.show()
-    #if (save):
-    #    plt.savefig("train_features.png")
+    if (save):
+      plt.savefig("train_features.png")
 
     ### END YOUR CODE
 
@@ -80,11 +75,8 @@ class Perceptron(object):
         ### YOUR CODE HERE
         
         n_samples, n_features=X.shape
-        X=np.c_[ X, np.ones(X.shape[0]) ]  
-        self.W=np.zeros(n_features+1)
+        X=np.c_[ X, np.ones(X.shape[0]) ]  #Add Bias column
         w=np.zeros(n_features+1)
-        
-        
 
         for i in range(self.max_iter):
             for index,row in enumerate(X):
@@ -151,8 +143,15 @@ class Perceptron(object):
         ### YOUR CODE HERE
 
         pred_y = self.predict(X)
+        
+        scr=0
+        
+        for i in range(len(y)):
+            if(y[i]==pred_y[i]):
+                scr+=1
+        scr=scr/len(y)
 
-        return np.mean(y == pred_y)
+        return scr
 
 
         ### END YOUR CODE
@@ -176,19 +175,18 @@ def show_result(X, y, W):
     """
     ### YOUR CODE HERE
    
-    show_features(X,y)
+    show_features(X,y,False)
     
     bias,weights=W[0],W[1:]
 
     
     line=(-(bias/weights[1])/(bias/weights[0]))*X+(-bias/weights[1])
-
     
+    plt.ylim(-1.25, 0.5)
+    plt.xlim(-1, 0)
     plt.plot(X,line)
-    plt.ylim(-1, 0)
     plt.savefig('model.png')
-    plt.show()
-    
+   
     
     #plt.plot()
 
