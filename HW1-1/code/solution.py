@@ -179,13 +179,13 @@ def show_result(X, y, W):
     
     bias,weights=W[0],W[1:]
 
-    
+    decision_line=(-weights[0]/weights[1])*X-(bias/weights[1])
     line=(-(bias/weights[1])/(bias/weights[0]))*X+(-bias/weights[1])
     
     plt.ylim(-1.25, 0.5)
     plt.xlim(-1, 0)
-    plt.plot(X,line)
-    plt.savefig('model.png')
+    plt.plot(X,decision_line)
+    plt.savefig('results.png')
    
     
     #plt.plot()

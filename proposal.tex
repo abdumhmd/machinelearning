@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+% Use Helvetica font.
+%\usepackage{helvet}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[sc]{mathpazo}
+\usepackage{color}
+\usepackage{amsmath,amsthm,amssymb,multirow,paralist}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% Use 1/2-inch margins.
+\usepackage[margin=0.8in]{geometry}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Project Proposal}}\\
+\end{center}
+
+\linethickness{1mm}\line(1,0){498}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Project Title}
+
+Application Deep Learning models for Polyp Segmentation
+
+\section{Team Members}
+
+\begin{itemize}
+  \item Abdurahman Ali Mohammed
+\end{itemize}
+
+\section{Project Details}
+
+\subsection{Project Objective}
+
+The objective of this project is to experiment different segmentation techniques and identify the best to perform Polyp Segmentation. This project will strive to show the effectiveness of Deep Learning in automatic segmentation of colonoscopy images.
+
+Since Colorectal cancer is the second most common cancer type among women and
+third most common among men, Building automatic segmentation models will help in the diagnosis and treatment of this medical issues. Several studies show that polyps are often overlooked during colonoscopies, with polyp miss rates of 14 to 30\% depending on type and size of the polyps. Hence, detection of polyps will help in prevention and treatment of colorectal cancer.
+
+Manual image segmentation requires huge amount of time,resources and subject to physician bias. Therefore, the need to have an automated method of image segmentation is crucial.
+
+\subsection{Datasets}
+
+The dataset used for this project is called "Kvasir-SEG: A Segmented Polyp Dataset". It is an an open-access dataset of gastrointestinal polyp images and corresponding segmentation masks, manually annotated by a medical doctor and then verified by an experienced gastroenterologist from Vestre Viken Health Trust in Norway. The images are carefully annotated by one or more medical experts from VV and the Cancer Registry of Norway (CRN). The resolution of the images contained in Kvasir-SEG varies from 332x487 to 1920x1072 pixels.It is obtained from https://datasets.simula.no/kvasir-seg/.
+
+The Kvasir-SEG dataset is made up of two folders: one for images and one
+for masks. Each folder contains 1000 images. The bounding boxes for the corresponding images are stored in a JSON file. This data will be split into training, validation and testing sets.   
+
+The images will be used as an input to a deep learning model which will extract features and classify each pixels of a given image. The labels will be segmentation masks provided in the dataset.
+
+
+\subsection{Machine Learning Algorithm}
+
+Deep Learning models will be used to perform segmentation on the given dataset. Different architectures like SegNet, UNet and FCN will be experimented with to see which one performs better.
+
+Neural networks can learn the high-dimensional hierarchical features of objects from large sets of training data.The encoder-decoder architecture used in Deep learning models makes them preferable for segmentation tasks. 
+
+
+
+\subsection{Expected Outcomes}
+
+The outcome of this project is a deep learning model with acceptable performance that can segment out Polyps in a given image.
+
+
+
+\end{document}
