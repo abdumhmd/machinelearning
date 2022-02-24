@@ -15,12 +15,14 @@ def svm_with_diff_c(train_label, train_data, test_label, test_data):
     ### YOUR CODE HERE
 
     cost = [0.01, 0.1, 1, 2, 3, 5]
-
+    print("------------Accuracy with different C values--------------")
     for c in cost:
         model=SVC(C=c,kernel='linear')
         model.fit(train_data, train_label) 
-        print("Cost ",c," ",model.score(test_data, test_label))
-        print("Support vectors: ",model.n_support_)
+        print("Cost= {0} : Score= {1}".format(c,model.score(test_data, test_label)))
+        print("Support vectors: ",model.n_support_.sum())
+    
+    
     ### END YOUR CODE
     
 
@@ -39,9 +41,10 @@ def svm_with_diff_kernel(train_label, train_data, test_label, test_data):
 
     ### YOUR CODE HERE
     kernel={'linear', 'poly', 'rbf'}
+    print("------------Accuracy with different Kernels--------------")
     for k in kernel:
         model=SVC(kernel=k)
         model.fit(train_data,train_label)
-        print("Kernel: ",k," ",model.score(test_data,test_label))
-        print("Support vectors: ",model.n_support_)
+        print("Kernel={0} : Score= {1}".format(k,model.score(test_data,test_label)))
+        print("Support vectors: {0}".format(model.n_support_.sum()))
     ### END YOUR CODE
