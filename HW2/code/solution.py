@@ -1,5 +1,5 @@
 from sklearn.svm import SVC
-
+from sklearn.metrics import accuracy_score
 
 def svm_with_diff_c(train_label, train_data, test_label, test_data):
     '''
@@ -19,7 +19,7 @@ def svm_with_diff_c(train_label, train_data, test_label, test_data):
     for c in cost:
         model=SVC(C=c,kernel='linear')
         model.fit(train_data, train_label) 
-        print("Cost= {0} : Score= {1}".format(c,model.score(test_data, test_label)))
+        print("Cost= %s : Score= %.3f " % (c,model.score(test_data, test_label)))
         print("Support vectors: ",model.n_support_.sum())
     
     
@@ -40,11 +40,11 @@ def svm_with_diff_kernel(train_label, train_data, test_label, test_data):
     '''
 
     ### YOUR CODE HERE
-    kernel={'linear', 'poly', 'rbf'}
+    kernel=['linear', 'rbf', 'poly']
     print("------------Accuracy with different Kernels--------------")
     for k in kernel:
         model=SVC(kernel=k)
         model.fit(train_data,train_label)
-        print("Kernel={0} : Score= {1}".format(k,model.score(test_data,test_label)))
+        print("Kernel= %s : Score= %.3f" % (k,model.score(test_data,test_label)))
         print("Support vectors: {0}".format(model.n_support_.sum()))
     ### END YOUR CODE

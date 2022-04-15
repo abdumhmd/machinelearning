@@ -1,0 +1,4 @@
+Books/
+data/
+Project/SegNet.best.hdf5
+Project/segnet_500epoch.best.hdf5
